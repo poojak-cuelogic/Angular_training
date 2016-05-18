@@ -143,8 +143,8 @@ Note: If successfully built, you will be able to access the Angular project at `
 │   │   │   │   └── signup.js
 │   │   │   │   └── forgot-password.js
 │   │   │   │   └── reset-password.js
-│   │   │   └── dashboard
-│   │   │       └── dashboard.js
+│   │   │   └── employee
+│   │   │       └── employee.js
 │   │   └── utility
 │   │       ├── security
 │   │       │   └── security.js

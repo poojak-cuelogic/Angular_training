@@ -1,7 +1,7 @@
-angular.module('dashboard.service', [])
-    .factory('dashboardService', ['$http', dashboardService]);
+angular.module('employee.service', [])
+    .factory('employeeService', ['$http', employeeService]);
 
-function dashboardService($http) {
+function employeeService($http) {
     userList = {
             "userDetails": [{
                 "id": 1,

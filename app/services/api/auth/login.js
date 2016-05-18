@@ -1,13 +1,13 @@
 angular.module('login.service', [])
-	   .factory('loginService', ['dashboardService', loginService]);
+	   .factory('loginService', ['employeeService', loginService]);
 
-function loginService(dashboardService) {
+function loginService(employeeService) {
 	var service = {};
     service.authenticateUser = authenticateUser;
     return service;
 
 	function authenticateUser(email, password) {
-		var user = dashboardService.searchUser(email, password);
+		var user = employeeService.searchUser(email, password);
 		return user;
 	}
 }

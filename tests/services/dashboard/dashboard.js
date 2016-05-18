@@ -1,12 +1,12 @@
-describe('Dashboard service test cases', function() {
+describe('Employee service test cases', function() {
 
-    beforeEach(module('dashboard.service'));
+    beforeEach(module('employee.service'));
 
-    var testDashboardService;
+    var testEmployeeService;
 
-    it('should contain an dashboardService service', inject(function(dashboardService, _$httpBackend_) {
-        testDashboardService = dashboardService;
-        expect(dashboardService).toBeDefined();
+    it('should contain an employeeService service', inject(function(employeeService, _$httpBackend_) {
+        testDashboardService = employeeService;
+        expect(employeeService).toBeDefined();
     }));
 
 });
