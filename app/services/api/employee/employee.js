@@ -6,69 +6,71 @@ function employeeService($http) {
             "userDetails": [{
                 "id": 1,
                 "name": "Prasanna",
-                "department": "Developer",
-                "salary": 1000,
-                "image": "http://cache4.asset-cache.net/fk/176794537.jpg?v=1&c=IWSAsset&k=1&f=2&d=4575EEE0F3AA8377CD9D0036C287379E479DFF9E20496F56146E8D247CE15381",
+                "age": 27,
+                "gender": "Male",
                 "email": "champ@gmail.com",
-                "password": "champ123"
+                "password": "champ123",
+                "education": "B.E (Computers)"
             },{
-                "id": 1,
-                "name": "Ayush",
-                "department": "I.T",
-                "salary": 1000,
-                "image": "resource/images/IMG_3050.JPG",
-                "email": "ayush@gmail.com",
-                "password": "ayush123"
-            }, {
                 "id": 2,
-                "name": "Bobo",
-                "department": "Project manager",
-                "salary": 100000,
-                "image": "resource/images/textures-selection-nice-high-resolution_2165080.jpg",
-                "email": "bobo@gmail.com",
-                "password": "bobo123"
+                "name": "Ayush",
+                "age": 27,
+                "gender": "Male",
+                "email": "ayush@gmail.com",
+                "password": "ayush123",
+                "education": "B.E (Computers)"
             }, {
                 "id": 3,
-                "name": "Baby",
-                "department": "developer",
-                "salary": 2000,
-                "image": "resource/images/404.png",
-                "email": "baby@gmail.com",
-                "password": "baby123"
+                "name": "Bobo",
+                "age": 27,
+                "gender": "Female",
+                "email": "bobo@gmail.com",
+                "password": "bobo123",
+                "education": "B.E (Computers)"
             }, {
                 "id": 4,
-                "name": "Nilesh",
-                "department": "Designer",
-                "salary": 5500,
-                "image": "resource/images/6309_1280x800.jpg",
-                "email": "nilesh@gmail.com",
-                "password": "nilesh123"
+                "name": "Baby",
+                "age": 29,
+                "gender": "Female",
+                "email": "baby@gmail.com",
+                "password": "baby123",
+                "education": "B.E (Computers)"
             }, {
                 "id": 5,
-                "name": "amol",
-                "department": "Manager",
-                "salary": 100500,
-                "image": "resource/images/brand-avatar.jpg",
-                "email": "amol@gmail.com",
-                "password": "amol123"
+                "name": "Nilesh",
+                "age": 27,
+                "gender": "Male",
+                "email": "nilesh@gmail.com",
+                "password": "nilesh123",
+                "education": "B.E (Computers)"
             }, {
                 "id": 6,
-                "name": "ganesh",
-                "department": "Accountant",
-                "salary": 1000,
-                "image": "resource/images/ipgeo.png",
+                "name": "Amol",
+                "age": 27,
+                "gender": "Male",
+                "email": "amol@gmail.com",
+                "password": "amol123",
+                "education": "B.E (Computers)"
+            }, {
+                "id": 7,
+                "name": "Ganesh",
+                "age": 27,
+                "gender": "Male",
                 "email": "ganesh@gmail.com",
-                "password": "ganesh123"
+                "password": "ganesh123",
+                "education": "B.E (Computers)"
             }]
         };
     var service = {};
-
     service.getUserList = getUserList;
     service.searchUser = searchUser;
-
+    service.initEmployee = initEmployee;
+    service.addEmployee = addEmployee;
+    service.getAllEmails = getAllEmails;
+    service.getUserById = getUserById;
+    service.updateEmployee = updateEmployee;
+    service.deleteEmployee = deleteEmployee;
     return service;
-
-    
 
     function getUserList() {
         return userList;
@@ -81,5 +83,48 @@ function employeeService($http) {
         });
     }
 
+    function getUserById(id) {
+        var userList = getUserList().userDetails;
+        return userList.find(function(d) {
+            return d.id == id;
+        });
+    }
+
+    function initEmployee() {
+        return {
+            name : "",
+            age : "",
+            education : "",
+            gender : "Male",
+            email : "",
+            password : ""
+        };
+    }
+
+    function addEmployee(employee) {
+        var userList = getUserList().userDetails;
+        employee.id = userList.length;
+        userList[employee.id] = employee;
+        return true;
+    }
+
+    function updateEmployee(employee) {
+        var userList = getUserList().userDetails;
+        userList.splice(employee.id - 1, 1, employee);
+        return true;
+    }
+
+    function deleteEmployee(employeeId) {
+        var user = getUserById(employeeId);
+        var userList = getUserList().userDetails;
+        return userList.splice(userList.indexOf(user), 1);
+    }
+
+    function getAllEmails() {
+        var userList = getUserList().userDetails;
+        return userList.map(function(d) {
+            return d.email;
+        });
+    }
     //END
 };

@@ -1,0 +1,55 @@
+<div class=employee"container-fluid paddingTP30" ng-init="initCreateView()">
+    <h3 class="page-title">{{setTitle}}</h3>
+    <form name="addUser" novalidate class="col-md-7" ng-submit="addUser.$valid && create(employee);">
+        <div class="form-group">
+            <label for="firstName">Name</label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="Enter Name" required ng-model="employee.name">
+            <div ng-show="addUser.$submitted || addUser.name.$touched">
+                <div ng-show="addUser.name.$error.required">Name is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Age</label>
+            <input name="age" type="number" min="1" max="99" class="form-control" id="age" placeholder="Enter Age" required ng-model="employee.age">
+            <div ng-show="addUser.$submitted || addUser.age.$touched">
+                <div ng-show="addUser.age.$error.required">Age is required</div>
+                <span ng-show="addUser.age.$error.number">This is not a number.</span>
+            </div>
+        </div>
+        <div class="form-group">    
+            <label for="email">Email address</label>
+            <input name="email" type="email" class="form-control" id="email" placeholder="Enter Email" required unique-email ng-model="employee.email">
+            <div ng-show="addUser.$submitted || addUser.email.$touched">
+                <span ng-show="addUser.email.$error.required">Email is required.</span>
+                <span ng-show="addUser.email.$error.email">This is not a valid email.</span>
+                <span ng-show="addUser.email.$error.uniqueEmail">This email is already taken.</span>
+            </div>
+        </div>
+        <div class="form-group">    
+            <label for="password">Password</label>
+            <input name="password" type="password" class="form-control" id="password" placeholder="Enter Password" required ng-model="employee.password">
+            <div ng-show="addUser.$submitted || addUser.password.$touched">
+                <div ng-show="addUser.password.$error.required">Password is required</div>
+            </div>
+        </div>
+         <div class="form-group">
+            <label for="lastName">Education</label>
+            <input name="education" type="text" class="form-control" id="education" placeholder="Enter Highest Qualification" required ng-model="employee.education">
+            <div ng-show="addUser.$submitted || addUser.education.$touched">
+                <div ng-show="addUser.education.$error.required">Education is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label for="" class="col-md-12">Gender</label>
+                <label class="col-md-6">
+                    <input type="radio" name="gender" id="male" value="Male" ng-model="employee.gender"> Male
+                </label>
+                <label class="col-md-6">
+                    <input type="radio" name="gender" id="female" value="Female" ng-model="employee.gender"> Female
+                </label>
+            </div>
+        </div>
+        <button ng-disabled="addUser.$invalid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

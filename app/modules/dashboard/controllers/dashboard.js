@@ -8,6 +8,8 @@
 
     function dashboardController($scope, $state, employeeService) {
         $scope.blackSpinner = 'resource/images/blackSpinner.gif';
+        $scope.orderByField = 'name';
+        $scope.reverseSort = false;
 
         $scope.userList = function() {
             //calling API and get user list
@@ -19,6 +21,14 @@
                 'tabMenu': 'Proposals',
                 'action': 'proposals'
             }]
+        }
+
+        $scope.deleteEmployee = function(employeeId) {
+            var result = employeeService.deleteEmployee(employeeId);
+            console.log($state);
+            if(result[0].id === employeeId) {
+                $state.reload();
+            }
         }
     }
 
