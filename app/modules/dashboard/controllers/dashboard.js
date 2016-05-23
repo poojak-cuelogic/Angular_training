@@ -4,12 +4,11 @@
 
     angular
         .module('dashboard')
-        .controller('dashboardController', ['$scope', '$state', 'employeeService', dashboardController]);
+        .controller('dashboardController', ['$scope', '$state', '$location', 'employeeService', dashboardController]);
 
-    function dashboardController($scope, $state, employeeService) {
+    function dashboardController($scope, $state, $location, employeeService) {
         $scope.blackSpinner = 'resource/images/blackSpinner.gif';
         $scope.orderByField = 'name';
-        $scope.reverseSort = false;
 
         $scope.userList = function() {
             //calling API and get user list
@@ -25,10 +24,17 @@
 
         $scope.deleteEmployee = function(employeeId) {
             var result = employeeService.deleteEmployee(employeeId);
-            console.log($state);
             if(result[0].id === employeeId) {
                 $state.reload();
             }
+        }
+
+        $scope.handleDblClick = function(employeeId) {
+            $location.url('user/edit/'+ employeeId);
+        }
+
+        $scope.toggleActive = function(index) {
+            $scope.selected = ($scope.selected == index) ? undefined : index;
         }
     }
 

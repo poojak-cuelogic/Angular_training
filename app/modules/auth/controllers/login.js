@@ -9,8 +9,8 @@
         $scope.authenticate = function() {
         	$scope.authenticUser = loginService.authenticateUser($scope.email, $scope.password);
         	if(typeof $scope.authenticUser !== 'undefined') {
-        		console.log('Redirect to dashboard');
         		localStorageServiceWrapper.set("user", $scope.authenticUser);
+                localStorageServiceWrapper.set("authenticated", true);gulp
         		$state.transitionTo('base.dashboard');
         	} else {
         		$scope.error = "User not found.";

@@ -102,6 +102,7 @@ function employeeService($http) {
     }
 
     function addEmployee(employee) {
+        console.log(employee);
         var userList = getUserList().userDetails;
         employee.id = userList.length;
         userList[employee.id] = employee;

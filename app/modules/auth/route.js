@@ -3,9 +3,9 @@
 
     angular
         .module('auth')
-        .config(['$stateProvider', stateProvider]);
+        .config(['$stateProvider', '$httpProvider', stateProvider]);
 
-    function stateProvider($stateProvider) {
+    function stateProvider($stateProvider, $httpProvider) {
 
         $stateProvider
             .state('login', {
@@ -17,6 +17,7 @@
                     }
                 }
             });
+        $httpProvider.interceptors.push('apiInterceptor');
     }
 
 })();

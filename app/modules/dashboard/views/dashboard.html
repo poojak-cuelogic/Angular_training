@@ -16,7 +16,7 @@
                     <th>Action</th>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="singleUser in getUsers | orderBy:orderByField:reverseSort">
+                    <tr ng-class="{'rowGreen': $index == selected}" ng-click="toggleActive($index);" ng-dblclick="handleDblClick(singleUser.id)" ng-repeat="singleUser in getUsers | orderBy:orderByField:reverseSort">
                         <td>{{singleUser.name}}</td>
                         <td>{{singleUser.age}}</td>
                         <td>{{singleUser.gender}}</td>

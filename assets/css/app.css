@@ -178,3 +178,7 @@ footer {
         width: 100%;
     }
 }
+
+.rowGreen {
+    background-color: #8DC63F !important;
+}

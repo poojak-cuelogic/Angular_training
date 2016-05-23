@@ -1,1 +1,1 @@
-angular.module('user', ['uniqueEmail.directive', 'confirmClick.directive']);
+angular.module('user', ['uniqueEmail.directive', 'confirmClick.directive', 'save.directive']);

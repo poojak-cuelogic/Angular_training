@@ -18,14 +18,15 @@
             'login.service'
 
         ])
-        .config(['$urlRouterProvider', '$locationProvider', initializeConfigurationPhase]);
+        .config(['$urlRouterProvider', '$locationProvider', '$httpProvider', initializeConfigurationPhase]);
 
-    function initializeConfigurationPhase($urlRouterProvider, $locationProvider) {
+    function initializeConfigurationPhase($urlRouterProvider, $locationProvider, $httpProvider) {
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
         });
         $urlRouterProvider.otherwise('/login');
+        $httpProvider.interceptors.push('apiInterceptor');
     }
 
 })();

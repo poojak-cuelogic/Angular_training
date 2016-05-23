@@ -7,9 +7,10 @@
     function userController($scope, $state, $stateParams, employeeService) {
     	var employeeId = ($stateParams.id)? $stateParams.id: null;
     	$scope.initCreateView = function(){
+            $scope.saveBtnTxt = "Save";
+            $scope.isDisabled = false;
     		if(employeeId !== null) {
     			$scope.setTitle = 'Edit Employee';
-    			console.log(employeeService.getUserById(employeeId));
     			$scope.employee = employeeService.getUserById(employeeId);
     		} else {
 	    		$scope.setTitle = 'Create Employee';
